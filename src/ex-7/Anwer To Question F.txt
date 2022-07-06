@@ -1,0 +1,3 @@
+We can use the `charArrSwap` function to swap between 2 halfs of an array by treating 
+the 2 halfs like different arrays.
+You can see the full solution in the main function!  

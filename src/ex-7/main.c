@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "../ex-3/rectangle.h"  //Rectangle.
 
-#define ARRAY_SIZE 3
+#define ARRAY_SIZE 4
 #define NOT_EQUAL 0
 #define EQUAL 1
 
@@ -18,9 +17,9 @@ void charArrCopy(char* firstArr, char* secondArr, size_t arrSize) {
 }
 
 unsigned char charArrCompare(char* firstArr, 
-                    char* secondArr, 
-                    size_t firstArrSize,
-                    size_t secondArrSize) 
+                            char* secondArr, 
+                            size_t firstArrSize,
+                            size_t secondArrSize) 
 {
     // Could use here memcopy, but because we want to learn here, I did it myself.
     if(firstArrSize != secondArrSize) {
@@ -44,14 +43,43 @@ void charArrSetValues(char* charArr,
     }
 }
 
+/**
+ * @brief This function swaps the content of the 2 arrays.
+ * They both must be at least the size of arrSize.
+ */
+void charArrSwap(char* firstArr,
+                char* secondArr,
+                size_t arrSize)
+{
+    for(size_t index = 0; index < arrSize; index++)
+    {
+        char tempVal = firstArr[index];
+        firstArr[index] = secondArr[index];
+        secondArr[index] = tempVal;
+    }
+}
+
+void printArr(char* arr, size_t size)
+{
+    for(size_t index = 0; index < size; index++)
+    {
+        printf("%d", arr[index]);
+        putchar(' ');
+    }
+}
+
 int main(void){
-    char firstArr[ARRAY_SIZE] = {1};
-    char secondArr[ARRAY_SIZE] = {0};
-    // Original solution.
-    // charArrCopy(firstArr, secondArr, ARRAY_SIZE);
-    // We can also do this.
-    charArrCopy(firstArr, secondArr, sizeof(firstArr));
-    printf("Are the arrays equal: %s", charArrCompare(firstArr, secondArr, ARRAY_SIZE, ARRAY_SIZE) == EQUAL ? "true" : "false");
-    charArrSetValues(secondArr, ARRAY_SIZE, 0);
+    // Exercise F:
+    char charArr[ARRAY_SIZE];
+    // set one half to hold the value 0, and the other half to hold the value 1.
+    charArrSetValues(charArr, sizeof(char) * (ARRAY_SIZE / 2), 0);
+    charArrSetValues(charArr + ARRAY_SIZE / 2, (sizeof(char) * ARRAY_SIZE / 2), 1);
+    printf("Before: ");
+    printArr(charArr, ARRAY_SIZE);
+    putchar('\n');
+    charArrSwap(charArr, charArr + ARRAY_SIZE / 2, (sizeof(char) * ARRAY_SIZE / 2));
+    printf("After: ");
+    printArr(charArr, ARRAY_SIZE);
+    putchar('\n');
     return 0;
 }
