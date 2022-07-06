@@ -1,0 +1,1 @@
+add_executable("ex-8.out" main.c)
