@@ -1,0 +1,5 @@
+With the sizeof operator, we can determine the size of the type that the array is build with (like the size of `int` or `Rectangle`).
+Then we can get the total size in bytes by multiplying the size of the type with the array's length.
+Because the size of char is byte, we can use the function `charArrCopy` by sending the same `int` or `Rectangle` array with the size of total bytes.
+It would copy the bytes of the array without knowing the type itself. Thus, using the same function to copy int's, Rectangle's and more.
+That's how most (if not all) C/C++ programmers copy objects, but they use the standart function `memcopy()`! 
