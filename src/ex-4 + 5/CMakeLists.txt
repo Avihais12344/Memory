@@ -1,0 +1,1 @@
+add_executable("ex-4+5.out" main.c)
